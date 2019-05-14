@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" id="styleguide">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>University</title>
+
+        <link rel="stylesheet" href="static/css/animate.css">
+        <link rel="stylesheet" href="static/css/cui-styleguide.min.css">
+        <link rel="stylesheet" href="static/css/featherlight.min.css">
+        <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+        <script src="static/js/styleguide.js"></script>
+        <script src="static/js/jquery-scrollto.js"></script>
+        <script src="static/js/clipboard.js"></script>
+        <script src="static/js/featherlight.min.js"></script>
+        <script src="static/js/Markdown.Converter.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    </head>
+    <body class="cui styleguide">
+
+        <div class="content-fluid">
+            <nav id="styleguideSidebar" class="sidebar">
+                <div class="sidebar__header">
+                    <div class="sidebar__header-title">University</div>
+                </div>
+                <ul id="rootSidebar" data-kss-ref="styleguide.homepage">
+                    <li class="sidebar__item" id="section-gettingStarted">
+                        <a>Home</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <main>
+                <header id="styleguideHeader" class="header header--compressed">
+                    <div class="header-bar container">
+                        <a class="btn btn--small btn--icon toggle-menu">
+                            <span class="icon-list-menu"></span>
+                        </a>
+                        <div class="header-bar__main">
+                            <div class="header-heading">
+                                <h1 class="page-title">University</h1>
+                            </div>
+                        </div>
+                        <div class="header-toolbar">
+                            <a class="btn btn--small btn--icon" href="mailto:atlantic-ui-styleguide@external.cisco.com?Subject=Feedback" title="Submit Feedback">
+                                <span class="icon-feedback"></span>
+                            </a>
+                        </div>
+                    </div>
+                </header>
+                <div class="content"> <div class="hero hero--indigo">
+
+                </div>
+                <div class="container">
+
+                        <div class="section">
+                                <div class="row" id="alertid">
+                                    {% with messages = get_flashed_messages(with_categories=true) %}
+                                      {% if messages %}
+                                        {% for category, message in messages %}
+                                          <div class="alert alert--{{ category }} alert-dismissible">
+                                                <div class="alert__icon icon-check"></div>
+                                                <div class="alert__message">{{message}}</div>
+                                                <div class="alert_close icon-close" data-dismiss="alert"></div>
+                                          </div>
+                                        {% endfor %}
+                                      {% endif %}
+                                    {% endwith %}
+
+                                    {% block body %}{% endblock %}
+                                </div>
+                        <div class="secondary-tabs">
+                            <ul class="tabs tabs--tall">
+                                <li id="tab-callleg" class="tab active">
+                                    <a><div class="tab-heading" title="callleg">&nbsp;&nbsp;Dashboard&nbsp;&nbsp;</div></a>
+                                </li>
+                                <!--<li id="tab-cospace" class="tab">-->
+                                    <!--<a><div class="tab-heading" title="cospace">CoSpace</div></a>-->
+                                <!--</li>-->
+                                <!--<li id="tab-malware" class="tab">-->
+                                    <!--<a><div class="tab-heading" title="malware">Malware Detection</div></a>-->
+                                <!--</li>-->
+                            </ul>
+                            <div class="tab-content">
+
+                                <!--Create Co Space and call leg profiles for lecturer and student-->
+                                <div id="tab-callleg-content" class="tab-pane active">
+                                        <form action="/createcospace" method="POST">
+                                                <div class="panel panel--loose text-large" style="height:400px">
+                                                      <h6>Co-Space</h6>
+                                                      <div class="divider divider--thicker"></div>
+                                                          <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group__text select">
+                                                                        <select name="selectLecProfile" id="selectLecProfile" required>
+                                                                            <option value="0" selected>Select</option>
+                                                                            {% for p in profiles_data %}
+                                                                                <option value="{{ p }}" id="{{ p }}">{{ p }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                        <label for="selectLecProfile">Lecturer Call Leg Profile: &nbsp </label>
+                                                                        <div class="required-block">
+                                                                            <span class="icon-asterisk"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group__text select">
+                                                                        <select name="selectStudProfile" id="selectStudProfile" required>
+                                                                            <option value="0" selected>Select</option>
+                                                                            {% for s in profiles_data %}
+                                                                                <option value="{{ s }}" id="{{ s }}">{{ s }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                        <label for="selectStudProfile">Student Call Leg Profile: &nbsp </label>
+                                                                        <div class="required-block">
+                                                                            <span class="icon-asterisk"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                          </div>
+                                                          <br />
+                                                          <br />
+                                                          <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group__text select">
+                                                                        <select name="cospacename" id="cospacename" onchange="setURI()" required>
+                                                                            <option value="0" selected>Select</option>
+                                                                            <option value="abc101" id="abc101">ABC101</option>
+                                                                            <option value="abc102" id="abc102">ABC102</option>
+                                                                            <option value="abc103" id="abc103">ABC103</option>
+                                                                            <option value="abc104" id="abc104">ABC104</option>
+                                                                            <option value="abc105" id="abc105">ABC105</option>
+                                                                            <option value="abc106" id="abc106">ABC106</option>
+                                                                            <option value="abc107" id="abc107">ABC107</option>
+                                                                            <option value="abc108" id="abc108">ABC108</option>
+                                                                            <option value="abc109" id="abc109">ABC109</option>
+                                                                            <option value="abc110" id="abc110">ABC110</option>
+                                                                        </select>
+                                                                        <!--<input name =  "cospacename" id="cospacename" required>-->
+                                                                        <label for="cospacename">Module/Space Name(Required): </label>
+                                                                        <div class="required-block">
+                                                                            <span class="icon-asterisk"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br />
+                                                                <br />
+                                                                <br />
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group__text">
+                                                                        <input name =  "autogen" id="autogen" disabled>
+                                                                        <label for="autogen">Auto-Generated: false </label>
+                                                                    </div>
+                                                                </div>
+                                                          </div>
+                                                          <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group__text">
+                                                                        <input name =  "studuri" id="studuri" required disabled>
+                                                                        <label for="studuri">Student URI(Required): </label>
+                                                                        <div class="required-block">
+                                                                            <span class="icon-asterisk"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br />
+                                                                <br />
+                                                                <br />
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group__text">
+                                                                        <input name =  "studcallId" id="studcallId" onBlur="setCallId();" required />
+                                                                        <label for="studcallId">Student Call ID(Required): </label>
+                                                                        <div class="required-block">
+                                                                            <span class="icon-asterisk"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                          </div>
+                                                          <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group__text">
+                                                                        <input name =  "lecuri" id="lecuri" required disabled>
+                                                                        <label for="lecuri">Lecturer URI(Required): </label>
+                                                                        <div class="required-block">
+                                                                            <span class="icon-asterisk"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br />
+                                                                <br />
+                                                                <br />
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group__text">
+                                                                        <input name =  "leccallId" id="leccallId" required disabled/>
+                                                                        <label for="leccallId">Lecturer Call ID(Required): </label>
+                                                                        <div class="required-block">
+                                                                            <span class="icon-asterisk"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br />
+                                                            </div>
+                                                    <br />
+                                                    <br />
+                                                    <div class="row">
+                                                        <button type = "submit" class="btn btn--primary">Create Co-Space</button>
+                                                    </div>
+                                                </div>
+                                            <br />
+                                        </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </main>
+        </div>
+        <!-- Function to populate Student and Lecturer URI automatically -->
+        <script>
+                function setURI(){
+                    var dropdown = document.getElementById("cospacename");
+                    var selection = dropdown.value;
+                    console.log(selection);
+                    var studentURI= document.getElementById("studuri");
+                    studentURI.value = selection+".space";
+                    var lecturerURI = document.getElementById("lecuri");
+                    lecuri.value = selection+"9.space";
+                    studentURI.disabled = false;
+                    lecturerURI.disabled = false;
+                  }
+        </script>
+        <!--Function to set call ID-->
+        <script>
+                function setCallId(){
+                    var studentCallId = document.getElementById('studcallId').value;
+                    var lecturerCallId = document.getElementById('leccallId');
+                    lecturerCallId.value = studentCallId+"9";
+                    lecturerCallId.disabled = false;
+                  }
+        </script>
+    </body>
+
+</html>

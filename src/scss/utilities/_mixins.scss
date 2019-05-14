@@ -1,0 +1,770 @@
+
+// -----------------------------------------------------------------------------
+// Absolute Center
+
+@mixin absolute-center {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%,-50%) !important;
+}
+
+
+// -----------------------------------------------------------------------------
+// Clearfix
+
+@mixin clearfix {
+    &:after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+}
+
+
+// -----------------------------------------------------------------------------
+// Disabled
+
+@mixin disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+// -----------------------------------------------------------------------------
+// Readonly
+
+@mixin readonly {
+    opacity: 0.5;
+    cursor: not-allowed;
+    z-index: 0;
+}
+
+
+// -----------------------------------------------------------------------------
+// Flex Mixins
+
+@mixin flex {
+    display: flex;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-center-vertical {
+    display: flex;
+    align-items: center;
+}
+
+@mixin flex-center-horizontal {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin flex-fluid {
+    flex: 1;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+}
+
+
+// -----------------------------------------------------------------------------
+// Full Page
+
+@mixin full-page {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.full-page {
+    @include full-page;
+}
+
+
+// -----------------------------------------------------------------------------
+// Lists
+
+@mixin list--unstyled {
+    list-style: none;
+
+    ul:not(:first-child) {
+        padding-left: $base-spacing;
+    }
+}
+
+@mixin list--inline {
+    display: inline-flex;
+    flex-wrap: wrap;
+
+    li {
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+
+    li + li {
+        margin: 0 0 0 -1px;
+    }
+}
+
+// For inline lists only
+@mixin list-divider {
+    li:after {
+        @include vertical-divider;
+    }
+    li:last-child:after {
+        content: '';
+        margin: 0;
+    }
+}
+
+
+
+// -----------------------------------------------------------------------------
+// Panels
+
+@mixin panel(
+    $color:             $base-panel-color,
+    $background:        $base-panel-background,
+    $background-hover:  "",
+    $border-color:      transparent,
+    $border-left-width: "",
+    $link-color:        "",
+    $link-decoration:   "",
+    $icon-color:        "",
+    $embellish:         "")
+{
+    color: $color;
+    position: relative;
+    background: $background;
+    box-shadow: none;
+    border: 1px solid $border-color;
+
+    @if $link-color != "" {
+        a {
+            color: $link-color;
+        }
+    }
+
+    @if $link-decoration != "" {
+        a {
+            text-decoration: $link-decoration;
+        }
+    }
+
+    @if $background-hover != "" {
+        &:hover {
+            background: tint($background-hover, 15);
+        }
+    }
+
+    @if $border-left-width != "" {
+        border-left-width: $border-left-width;
+    }
+}
+
+@mixin panel-hover(
+    $link-color:        '',
+    $background:        $base-panel-background,
+    $embellish:         'lighten')
+{
+    @if $embellish == "lighten" {
+        background-color: lighten($background, $base-panel-hover-lighten);
+    }
+    @else {
+        background-color: darken($background, $base-panel-hover-darken);
+    }
+
+    @if $link-color != "" {
+        color: $link-color;
+    }
+}
+
+@mixin panel-section() {
+  @include clearfix;
+  position: relative;
+  padding: $base-panel-section-padding;
+
+  > * {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@mixin panel-padding($padding: $base-panel-padding) {
+  padding: $padding;
+}
+
+@mixin panel-margin($margin: $base-panel-margin) {
+  .panel + .panel {
+      margin: $margin;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Swatches
+// Used to generate the colors section in the Styleguide
+
+@mixin swatch-fill($background, $color, $border, $name) {
+    background: $background;
+    color: $color;
+    border: 1px solid $border;
+    &:after {
+        content: "#{$name}  #{$background}";
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+// -----------------------------------------------------------------------------
+// Sections
+
+@mixin section-padding($padding: $base-spacing) {
+  padding: $padding 0;
+}
+
+@mixin section-margin($margin: $base-spacing) {
+  .section + .section {
+    margin: $margin 0;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Text Ellipsis
+
+@mixin text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin text-noellipsis {
+    white-space: normal;
+}
+
+
+// -----------------------------------------------------------------------------
+// Text No Select
+
+@mixin text-noselect {
+    user-select: none;
+}
+
+
+// -----------------------------------------------------------------------------
+// Break Words
+
+@mixin text-break {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+@mixin text-break-word {
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+
+// -----------------------------------------------------------------------------
+// Monospace
+
+@mixin text-monospace {
+    font-family: $monospace-font-family;
+}
+
+
+// -----------------------------------------------------------------------------
+// Hide input field. Used by checkboxes, radios, and switches to hide the ugly
+// browser default input types
+
+@mixin hidden-input {
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+// -----------------------------------------------------------------------------
+// Dividers
+
+@mixin divider-horizontal-spacing($margin: $base-spacing-regular) {
+    margin: $margin 0;
+}
+
+@mixin divider-horizontal($thickness: 1px, $color: $light-gray-5, $location: top) {
+    border-#{$location}: $thickness solid $color;
+}
+
+@mixin divider-accent(
+    $background:    $base-divider-accent-background,
+    $height:        $base-divider-height,
+    $width:         $base-divider-accent-width,
+    $min-width:     $base-divider-accent-min-width
+) {
+    &:before {
+        position: absolute;
+        left: 0;
+        top: -($height);
+        width: $width;
+        min-width: $min-width;
+        height: $height;
+        background-color: $background;
+        content: '';
+    }
+}
+
+@mixin vertical-divider($margin: 0 $base-spacing * 0.25) {
+    color: $base-muted-color;
+    content: '|';
+    margin: $margin;
+    padding: 0;
+}
+
+.divider--vertical {
+    > :after {
+        @include vertical-divider;
+    }
+}
+
+
+// -----------------------------------------------------------------------------
+// Sidebar
+
+@mixin sidebar-color(
+    $background:            $sidebar-background,
+    $background-selected:   $sidebar-item-background-selected,
+    $color:                 $sidebar-color,
+    $color-selected:        $sidebar-item-color-selected,
+    $divider-color:         $sidebar-divider-color,
+    $link-color:            $sidebar-link-color
+) {
+    background: $background;
+    color: $color;
+
+    a {
+        color: $link-color;
+    }
+
+    li {
+        &.sidebar__item--selected a,
+        &.selected a,
+        a:hover {
+            color: $color-selected;
+            background-color: $background-selected;
+        }
+    }
+
+    > ul li.sidebar__drawer > a:after {
+        color: $link-color; // Colorize chevrons
+    }
+
+    > ul li.sidebar__drawer:hover > a:after {
+        color: $color-selected; // Colorize chevrons on hover
+    }
+
+    > ul > li {
+        box-shadow: 0 1px 0 $divider-color inset; // divider lines
+    }
+}
+
+
+// -----------------------------------------------------------------------------
+// Hero
+
+@mixin hero-color($background: $base-button-background, $color: $white) {
+  background-image: none;
+  &:after {
+    background: $background;
+  }
+  .apollo-hero__content {
+    color: $color;
+  }
+}
+
+@mixin set-heading-size($size) {
+    $h1-font-size: $size * 2.4 !default;
+    $h2-font-size: $size * 2 !default;
+    $h3-font-size: $size * 1.8 !default;
+    $h4-font-size: $size * 1.6 !default;
+    $h5-font-size: $size * 1.4 !default;
+    $h6-font-size: $size * 1.2 !default;
+
+    $headings:  (h1, $h1-font-size, $h1-font-weight),
+                (h2, $h2-font-size, $h2-font-weight),
+                (h3, $h3-font-size, $h3-font-weight),
+                (h4, $h4-font-size, $h4-font-weight),
+                (h5, $h5-font-size, $h5-font-weight),
+                (h6, $h6-font-size, $h6-font-weight);
+
+    @each $heading, $heading-size, $heading-weight in $headings {
+        #{$heading}, .#{$heading} {
+            font-size: $heading-size;
+            font-weight: $heading-weight;
+
+            > small, > .small {
+                font-size: $heading-size * 0.8;
+            }
+        }
+    }
+}
+
+
+// -----------------------------------------------------------------------------
+// Scaled Headers (default)
+
+@mixin scaled-headers() {
+    @include media-breakpoint-between(xs,sm) { @include set-heading-size($small-font-size); }
+    @include media-breakpoint-between(sm,md) { @include set-heading-size($small-font-size); }
+    @include media-breakpoint-between(md,lg) { @include set-heading-size($medium-font-size); }
+    @include media-breakpoint-between(lg,xl) { @include set-heading-size($large-font-size); }
+    @include media-breakpoint-up(xl) { @include set-heading-size($large-font-size); }
+}
+
+
+// -----------------------------------------------------------------------------
+// Fixed Headers. Allow apps to have fixed header sizes (versus scaling)
+
+@mixin fixed-headers($font-size: $medium-font-size) {
+    @include media-breakpoint-between(xs,sm) { @include set-heading-size($font-size); }
+    @include media-breakpoint-between(sm,md) { @include set-heading-size($font-size); }
+    @include media-breakpoint-between(md,lg) { @include set-heading-size($font-size); }
+    @include media-breakpoint-between(lg,xl) { @include set-heading-size($font-size); }
+    @include media-breakpoint-up(xl)         { @include set-heading-size($font-size); }
+}
+
+
+// -----------------------------------------------------------------------------
+// Labels / Tags
+
+@mixin label-size(
+  $padding: $base-label-padding,
+  $font-size: $base-label-font-size,
+  $width: "",
+  $height: $base-label-height)
+{
+    margin: 1px 0;
+    padding: $padding;
+    font-size: $font-size;
+    height: $height;
+    line-height: $font-size;
+    vertical-align: middle;
+
+    @if $width != "" {
+        width: $width;
+        min-width: $width;
+        max-width: $width;
+    }
+
+    .icon-close {
+        font-size: $font-size;
+    }
+}
+
+@mixin label-color(
+    $background: $base-label-background,
+    $border: "unset",
+    $color: $base-label-color)
+{
+    background: $background;
+    border: $border;
+    color: $color;
+
+    a,
+    a:hover {
+        color: $color;
+    }
+}
+
+
+// -----------------------------------------------------------------------------
+// Links / Buttons
+
+%link {
+  display: inline-block;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border-width: 0;
+  border-radius: $aui-button-border-radius;
+  font-weight: $aui-button-font-weight;
+  cursor: pointer;
+  -webkit-font-smoothing: inherit;
+}
+
+@mixin link-plain {
+    @extend %link;
+    color: $base-font-color;
+
+    &:hover {
+        color: $base-accent-color;
+    }
+}
+
+@mixin btn-size(
+    $padding:       $aui-button-padding,
+    $font-size:     $aui-button-font-size,
+    $line-height:   $aui-button-line-height,
+    $height:        $aui-button-height,
+    $min-width:     $aui-button-min-width,
+    $max-width:     $aui-button-max-width)
+{
+    @extend %link;
+    @include text-ellipsis;
+    text-align: center;
+    vertical-align: middle;
+    padding: $padding;
+    font-size: $font-size;
+    line-height: $line-height;
+    height: $height;
+    min-width: $min-width;
+    max-width: $max-width;
+    transition: box-shadow 0.1s linear;
+}
+
+@mixin btn-color(
+    $background:          $aui-button-background,
+    $color:               $aui-button-color,
+    $background-disabled: $aui-button-background-disabled,
+    $background-hover:    $aui-button-background-hover,
+    $background-active:   $aui-button-background-active,
+    $background-focus:    "",
+    $background-selected: $aui-button-background-selected,
+    $color-disabled:      $aui-button-color-disabled,
+    $color-active:        $aui-button-color-active,
+    $color-hover:         $aui-button-color-hover,
+    $color-focus:         "",
+    $color-selected:      "",
+    $border:              "",
+    $border-hover:        "",
+    $border-focus:        "",
+    $border-selected:     "",
+    $group-border-color:  "")
+{
+    border: 1px solid transparent;
+    background: $background;
+    color: $color;
+
+    @if $border != "" {
+        box-shadow: inset 0 0 0 $aui-button-border-size $border;
+    }
+
+    @if $border-focus == "" {
+        $border-focus: $background;
+    }
+
+    &:hover {
+        box-shadow: 0 0 0 0 transparent;
+        background-color: $background-hover;
+        color: $color-hover;
+
+        @if $border-hover != "" {
+            box-shadow: inset 0 0 0 $aui-button-border-size $border-hover;
+        }
+    }
+
+    &:focus {
+        box-shadow: 0 0 1px 1px $border-focus;
+        border: 1px solid $white;
+
+        @if $color-focus != "" {
+            color: $color-focus;
+        }
+        @if $background-focus != "" {
+            background-color: $background-focus;
+        }
+    }
+
+    &:active {
+        box-shadow: 0 0 0 0 transparent;
+        color: $aui-button-color-active;
+        background-color: $aui-button-background-active;
+    }
+
+    &[disabled],
+    &.disabled {
+        opacity: 1;
+        color: $color-disabled;
+        @if $background-disabled != "" {
+            background-color: $background-disabled;
+            @if $border != "" {
+                box-shadow: inset 0 0 0 2px $base-button-background-disabled;
+            }
+        }
+    }
+
+    &.selected {
+        @if $background-selected != "" {
+            background-color: $background-selected;
+        }
+        @if $border-selected != "" {
+            box-shadow: inset 0 0 0 1px $border-selected;
+        }
+        @if $color-selected != "" {
+            color: $color-selected;
+        }
+    }
+}
+
+@mixin btn-margin(
+    $margin: $base-btn-margin)
+{
+    .btn + .btn {
+        margin-left: $margin;
+    }
+}
+
+@mixin button-circle(
+  $font-size:           $button-icon-font-size,
+  $size:                $button-icon-size)
+{
+  padding: 0;
+  margin: 0;
+  line-height: $size;
+  vertical-align: middle;
+  height: $size;
+  width: $size;
+
+  > span[class^="icon-"] {
+    font-size: $font-size;
+  }
+
+  .button-subtext {
+    top: $size + ($base-spacing * 0.25);
+  }
+}
+
+@mixin button-pill(
+  $padding,
+  $font-size,
+  $line-height,
+  $height:              $base-button-height,
+  $width:               "",
+  $max-width:           $base-button-max-width,
+  $margin:              $base-button-margin)
+{
+  padding: $padding;
+  margin: 0;
+  font-size: $font-size;
+  line-height: $line-height;
+  max-width: $max-width;
+  vertical-align: middle;
+  height: $height;
+
+  @if $width != "" {
+    width: $width;
+  }
+}
+
+@mixin button-color(
+  $background:          $base-button-background,
+  $color:               $base-button-color,
+  $background-disabled: $base-button-background-disabled,
+  $background-hover:    $base-button-background-hover,
+  $background-active:   $base-button-background-active,
+  $background-focus:    "",
+  $color-disabled:      $base-button-color-disabled,
+  $color-active:        $base-button-color-active,
+  $color-hover:         $base-button-color-hover,
+  $color-focus:         "",
+  $border:              "",
+  $border-hover:        "",
+  $border-focus:        "")
+{
+
+  background: $background;
+  color: $color;
+
+  @if $border != "" {
+    box-shadow: inset 0 0 0 2px $border;
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 0 transparent;
+    background-color: $background-hover;
+    color: $color-hover;
+  }
+
+  &:hover {
+    @if $border-hover != "" {
+      box-shadow: inset 0 0 0 2px $border-hover;
+    }
+  }
+
+  &:focus {
+    @if $color-focus != "" {
+      color: $color-focus;
+    }
+    @if $background-focus != "" {
+      background-color: $background-focus;
+    }
+    @if $border-focus != "" {
+      box-shadow: inset 0 0 0 2px $border-focus;
+    }
+  }
+
+  &:active,
+  &.button--active {
+    box-shadow: 0 0 0 0 transparent;
+    color: $color-active;
+    background-color: $background-active;
+  }
+
+  &.disabled {
+    opacity: 1;
+    color: $color-disabled;
+    @if $background-disabled != "" {
+      background-color: $background-disabled;
+      @if $border != "" {
+        box-shadow: inset 0 0 0 2px $base-button-background-disabled;
+      }
+    }
+  }
+}
+
+/// Fetch nested keys
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Keys to fetch
+/// @return {*}
+@function map-deep-get($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+    @return $map;
+}
+
+/// Test if map got all `$keys` nested with each others
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Keys to test
+/// @return {Bool}
+@function map-has-nested-keys($map, $keys...) {
+    @each $key in $keys {
+        @if not map-has-key($map, $key) {
+            @return false;
+        }
+        $map: map-get($map, $key);
+    }
+    @return true;
+}

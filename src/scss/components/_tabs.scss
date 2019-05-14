@@ -1,0 +1,403 @@
+//
+// Tab updated
+//
+// Since: 1.0.1
+//
+// Styleguide Components.Tab
+//
+
+
+//
+// Layout
+//
+// <blockquote>Add the class `active` on a tab to denote the current selection<br>Wrap your tabs in a `secondary-tabs` div to differentiate header tabs versus secondary tabs (bottom border is added for secondary tabs)</blockquote>
+//
+// Markup:
+// <div class="secondary-tabs">
+//     <ul class="tabs">
+//         <li class="tab active">
+//             <a>
+//                 <div class="tab__heading" title="Tab Title 1">Tab Title 1</div>
+//             </a>
+//         </li>
+//         <li class="tab">
+//             <a>
+//                 <div class="tab__heading" title="Tab Title 2">Tab Title 2</div>
+//             </a>
+//         </li>
+//         <li class="tab">
+//             <a>
+//                 <div class="tab__heading" title="Tab Title 3">Tab Title 3</div>
+//             </a>
+//         </li>
+//     </ul>
+// </div>
+//
+// Weight: 1
+//
+// Styleguide Components.Tab.Layout
+//
+
+
+//
+// Tall
+//
+// <blockquote>Add the class `nav-tabs--tall` or `tabs--tall` to render taller tabs<br>This only affects horizontal tabs but can be applied to either header tabs or secondary tabs</blockquote>
+//
+// Markup:
+// <div class="secondary-tabs">
+//     <ul class="tabs tabs--tall">
+//         <li class="tab active">
+//             <a>
+//                 <div class="tab__heading" title="Tall Tab 1">Tall Tab 1</div>
+//             </a>
+//         </li>
+//         <li class="tab">
+//             <a>
+//                 <div class="tab__heading" title="Tall Tab 2">Tall Tab 2</div>
+//             </a>
+//         </li>
+//         <li class="tab">
+//             <a>
+//                 <div class="tab__heading" title="Tall Tab 3">Tall Tab 3</div>
+//             </a>
+//         </li>
+//     </ul>
+// </div>
+//
+// Weight: 2
+//
+// Styleguide Components.Tab.Tall
+//
+
+
+//
+// Direction
+//
+// <blockquote>Tabs can flow horizontal (default) or add the class `tabs--vertical` for vertical</blockquote>
+//
+// Markup:
+// <ul class="tabs tabs--vertical">
+//     <li class="tab active">
+//         <a>
+//             <div class="tab__heading" title="Tab Title 1">Tab Title 1</div>
+//         </a>
+//     </li>
+//     <li class="tab">
+//         <a>
+//             <div class="tab__heading" title="Tab Title 2">Tab Title 2</div>
+//         </a>
+//     </li>
+//     <li class="tab">
+//         <a>
+//             <div class="tab__heading" title="Tab Title 3">Tab Title 3</div>
+//         </a>
+//     </li>
+// </ul>
+//
+// Weight: 3
+//
+// Styleguide Components.Tab.Direction
+//
+
+
+//
+// Example
+//
+// Markup:
+// <div class="secondary-tabs">
+//     <ul class="tabs">
+//         <li id="tab-routers" class="tab active">
+//             <a>
+//                 <div class="tab__heading" title="Routers">Routers</div>
+//             </a>
+//         </li>
+//         <li id="tab-switches" class="tab">
+//             <a>
+//                 <div class="tab__heading" title="Switches">Switches</div>
+//             </a>
+//         </li>
+//         <li id="tab-wireless" class="tab">
+//             <a>
+//                 <div class="tab__heading" title="Wireless">Wireless</div>
+//             </a>
+//         </li>
+//     </ul>
+//     <div class="tab-content">
+//         <div id="tab-routers-content" class="tab-pane active">
+//             <div class="section text-center">
+//                 <h1>Routers for networks of all types and sizes<h1>
+//                 <h6 class="base-margin-top">Find secure, digital-ready routers for any application, anywhere.</h6>
+//             </div>
+//             <div class="section">
+//                 <div class="row">
+//                     <div class="col-md-4">
+//                         <img src="public/img/branch-routers.png">
+//                         <h4>Branch</h4>
+//                         <p>Gain highly secure connectivity, machine learning, and cloud-managed security.</p>
+//                         <ul>
+//                             <li><a>ISR 800 Series</a></li>
+//                             <li><a>ISR 1000 Series</a></li>
+//                             <li><a>ISR 4000 Series</a></li>
+//                             <li><a>Meraki MX</a></li>
+//                         </ul>
+//                     </div>
+//                     <div class="col-md-4">
+//                         <img src="public/img/wan-routers.png">
+//                         <h4>WAN Aggregation</h4>
+//                         <p>Get performance and security for WAN, Internet, and M2M interconnectivity.</p>
+//                         <ul>
+//                             <li><a>NCS 5000 Series</a></li>
+//                             <li><a>NCS 5500 Series</a></li>
+//                             <li><a>ASR 1000 Series</a></li>
+//                         </ul>
+//                     </div>
+//                     <div class="col-md-4">
+//                         <img src="public/img/edge-routers.png">
+//                         <h4>Edge</h4>
+//                         <p>Grow density and resiliency with programmability for a scalable network edge.</p>
+//                         <ul>
+//                             <li><a>ASR 1000 Series</a></li>
+//                             <li><a>ASR 9000 Series</a></li>
+//                         </ul>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//         <div id="tab-switches-content" class="tab-pane">
+//             <div class="section text-center">
+//                 <h1>Switching for a changing world<h1>
+//                 <h6 class="base-margin-top">Our Catalyst 9000 switches constantly adapt to help you solve new challenges. Their integrated security helps you address ever-changing threats. They simplify management of your evolving mobility, Internet-of-Things (IoT), and cloud requirements. Introducing an entirely new era of networking. The Network. Intuitive.</h6>
+//             </div>
+//             <div class="section">
+//                 <div class="row">
+//                     <div class="col-md-4">
+//                         <img src="public/img/9300-switches.png">
+//                         <h4>Catalyst 9300 Series</h4>
+//                         <p>The Catalyst 9300 Series is our top fixed-access enterprise network switch series, stacking to 480 Gbps.</p>
+//                         <a>Explore the 9300</a>
+//                     </div>
+//                     <div class="col-md-4">
+//                         <img src="public/img/9400-switches.jpg">
+//                         <h4>Catalyst 9400 Series</h4>
+//                         <p>Cisco’s leading modular-access switches for enterprise, the Catalyst 9400 Series supports up to 9 Tbps.</p>
+//                         <a>Explore the 9400</a>
+//                     </div>
+//                     <div class="col-md-4">
+//                         <img src="public/img/edge-routers.png">
+//                         <h4>Catalyst 9500 Series</h4>
+//                         <p>The Catalyst 9500 Series is the industry’s first fixed-core 40-Gbps switch for the enterprise.</p>
+//                         <a>Explore the 9500</a>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//         <div id="tab-wireless-content" class="tab-pane">
+//             <div class="section text-center">
+//                 <h1>See what's possible with our products<h1>
+//                 <h6 class="base-margin-top">Provide enterprise-level, highly secure wireless access for businesses of any size, and easily manage your network.</h6>
+//             </div>
+//             <div class="section">
+//                 <div class="row">
+//                     <div class="col-md-4 text-center">
+//                         <img src="public/img/indoor-accesspoints-wireless.png">
+//                         <h4><a>Indoor Access Points</a></h4>
+//                     </div>
+//                     <div class="col-md-4 text-center">
+//                         <img src="public/img/outdoor-accesspoints-wireless.png">
+//                         <h4><a>Outdoor Access Points</a></h4>
+//                     </div>
+//                     <div class="col-md-4 text-center">
+//                         <img src="public/img/lan-wireless.png">
+//                         <h4><a>Wireless LAN Controllers</a></h4>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>
+// </div>
+//
+// Weight: 4
+//
+// Styleguide Components.Tab.Example
+//
+
+ul.tabs,
+.nav-tabs {
+
+    @include list--unstyled;
+    display: block;
+    position: relative;
+    font-size: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 0;
+
+    .header & {
+        display: block;
+
+        @include media-breakpoint-up(md) {
+            margin-top: 0;
+        }
+    }
+
+    > li {
+        display: inline-block;
+        font-size: $base-font-size;
+        vertical-align: bottom;
+        margin: $base-tab-margin;
+
+        &.active,
+        &:hover {
+            > a {
+                font-weight: normal;
+                box-shadow: 0 -5px 0 $base-accent-color inset;
+                color: $base-link-color;
+            }
+        }
+
+        > a {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 0 10px 0;
+            color: $base-font-color;
+            line-height: 1;
+            text-align: center;
+            user-select: none;
+
+            &:hover {
+                color: $base-link-color;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .tab__heading,
+    tab-heading,
+    .tab-heading {
+        display: block;
+        margin: 0;
+        padding: $base-tab-padding;
+
+        &:after {
+            display: block;
+            height: 0;
+            content: attr(title);
+            font-weight: bold;
+            visibility: hidden;
+        }
+    }
+
+    &--tall {
+        .tab__heading, tab-heading, .tab-heading {
+            padding: $base-tab-tall-padding;
+        }
+    }
+
+    &.tabs--vertical {
+        box-shadow: none;
+        > li {
+            display: block;
+            font-size: $base-font-size;
+            vertical-align: unset;
+            margin: 0;
+
+            + li {
+                margin: ($base-spacing * 0.25) 0;
+            }
+
+            > a {
+                display: flex;
+                align-items: center;
+                padding: 0 0 0 ($base-spacing * 0.5);
+                height: $base-tab-vertical-height;
+                &.tab__heading {
+                    margin: 0 ($base-spacing * 0.25);
+                }
+            }
+
+            &.active {
+                > a {
+                    box-shadow: 0 none;
+                    background-color: $base-accent-color;
+                    color: $white;
+                }
+                &:hover {
+                    > a {
+                        color: $white;
+                    }
+                }
+            }
+
+            &:hover {
+                > a {
+                    box-shadow: ($base-spacing * 0.25) 0 $base-accent-color inset;
+                }
+            }
+        }
+
+        // Add right-hand border modifier to vertical tabs
+        &.tabs--border-right {
+            border: 0 none;
+            padding-right: 0;
+
+            @include media-breakpoint-up(md) {
+                border-right: $base-border;
+                padding-right: 1px;
+            }
+        }
+    }
+}
+
+.tab-icon {
+    margin: 0;
+}
+
+.tab-icon--status {
+    margin: 0 5px 0 -5px;
+}
+
+.tab-icon--close {
+    margin: 0 -5px 0 5px;
+    color: $base-muted-color;
+    padding: 0;
+
+    &:hover {
+        color: $danger;
+        opacity: 1;
+    }
+}
+
+.tab-content {
+    .header & {
+        display: none;
+    }
+}
+
+.tab-pane {
+    @include clearfix;
+    display: none;
+
+    &.active {
+        display: block;
+        animation: fade-in .5s;
+    }
+}
+
+.secondary-tabs {
+    .tabs, .nav-tabs {
+        display: block;
+        box-shadow: 0 -1px 0 $base-border-color inset;
+    }
+
+    .tab-pane {
+        padding: $base-spacing 0;
+    }
+}
+
+// Fix for text cutoff on mobile menu. Need to exclude tabs from the list
+ul.tabs.list li+li {
+    margin: 0;
+}
