@@ -7,10 +7,19 @@ A University in Australia wanted to automate the creation of co-spaces for lectu
 *  Oct/Nov 2018
 ***
 
-## Prerequisites
+#### Prerequisites
 * Python 2.7
 * PyCharm/Any text editor
 * Flask
+* Make sure you have a running CMS instance
+
+#### Steps to Reproduce
+* Download/clone the repository
+* Import the code into a text editor like pycharm
+* Open controller.py file and make necessary changes as mentioned in the comment inside the file
+* Import the virtual env(univ) into your development environment or you can setup your own with the necessary libraries
+* After necessary changes are made to the code, execute controller.py file on the editor or on the terminal
+
 
 #### API Reference/Documentation:
 * [Cisco Meeting Server Release 2.3 API Reference](https://www.cisco.com/c/dam/en/us/td/docs/conferencing/ciscoMeetingServer/Reference_Guides/Version-2-3/Cisco-Meeting-Server-API-Reference-Guide-2-3.pdf)
